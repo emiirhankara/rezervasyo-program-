@@ -96,4 +96,20 @@ class AuthenticationFlowTest extends TestCase
 
         $this->assertGuest();
     }
+
+    public function test_authenticated_navigation_shows_the_account_dropdown(): void
+    {
+        $user = User::factory()->create([
+            'name' => 'Emirhan Kara',
+            'email' => 'emirhan@example.com',
+        ]);
+
+        $this->actingAs($user)
+            ->get(route('home'))
+            ->assertOk()
+            ->assertSee('account-dropdown')
+            ->assertSee('Emirhan Kara')
+            ->assertSee('Rezervasyon yap')
+            ->assertSee('Oturumu kapat');
+    }
 }

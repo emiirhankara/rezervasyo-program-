@@ -43,10 +43,21 @@
         .nav-dropdown:hover .nav-trigger svg, .nav-dropdown:focus-within .nav-trigger svg { transform: rotate(180deg); }
         .dropdown-menu a { display: block; padding: 11px 12px; border-radius: 4px; color: #46544f; font-size: 13px; }
         .dropdown-menu a:hover, .dropdown-menu a:focus-visible { outline: none; background: var(--mint); color: var(--green-dark); }
+        .account-dropdown { position: relative; display: flex; align-items: center; }
+        .account-trigger { color: var(--green-dark); }
+        .account-trigger svg { width: 13px; height: 13px; transition: transform .18s; }
+        .account-menu { position: absolute; z-index: 6; top: calc(100% + 4px); right: 0; width: 220px; padding: 7px; border: 1px solid var(--line); border-radius: 6px; background: #fff; box-shadow: 0 12px 30px rgb(32 43 40 / 10%); opacity: 0; visibility: hidden; transform: translateY(5px); transition: opacity .16s, transform .16s, visibility .16s; }
+        .account-dropdown:hover .account-menu, .account-dropdown:focus-within .account-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .account-dropdown:hover .account-trigger svg, .account-dropdown:focus-within .account-trigger svg { transform: rotate(180deg); }
+        .account-menu-heading { padding: 10px 11px 12px; border-bottom: 1px solid var(--line); }
+        .account-menu-heading strong, .account-menu-heading span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .account-menu-heading strong { color: var(--ink); font: 700 13px 'Manrope', sans-serif; }
+        .account-menu-heading span { margin-top: 3px; color: var(--muted); font-size: 11px; }
+        .account-menu a, .account-menu button { width: 100%; display: block; padding: 11px; border: 0; border-radius: 4px; background: transparent; color: #46544f; font: 500 13px 'DM Sans', sans-serif; text-align: left; cursor: pointer; }
+        .account-menu a:hover, .account-menu a:focus-visible, .account-menu button:hover, .account-menu button:focus-visible { outline: none; background: var(--mint); color: var(--green-dark); }
         .mobile-booking-links { display: none; }
         .header-note { display: none; }
         .global-status { width: min(1120px, calc(100% - 48px)); margin: 18px auto 0; padding: 12px 15px; border-left: 3px solid var(--green); background: var(--mint); color: var(--green-dark); font-size: 13px; }
-        .account-name { color: var(--green-dark); cursor: default; }
         .main-nav form { margin: 0; }
         main { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 56px 0 72px; }
         .intro { max-width: 700px; margin-bottom: 34px; animation: rise .55s ease both; }
@@ -92,7 +103,7 @@
         .footer-links a:hover { color: var(--green); }
         @keyframes rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 800px) { .booking-layout { grid-template-columns: 1fr; gap: 20px; } .aside { position: static; grid-row: 1; } main { padding-top: 38px; } }
-        @media (max-width: 620px) { .header-inner { width: min(100% - 28px, 1120px); min-height: 68px; flex-wrap: wrap; gap: 0; padding: 11px 0 7px; } .main-nav { height: auto; width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 0; } .nav-link, .nav-trigger { min-height: 39px; padding: 0 8px; font-size: 12px; } .nav-dropdown { height: auto; } .dropdown-menu { top: calc(100% + 2px); left: auto; right: 0; } .main-nav > .nav-dropdown { display: none; } .mobile-booking-links { display: flex; order: 6; flex: 0 0 100%; justify-content: space-around; gap: 4px; } .main-nav > a.nav-link:last-child, .main-nav > .account-name { order: 4; margin-left: auto; } .main-nav form { order: 5; } .account-name { max-width: 88px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .mobile-booking-links a { padding: 7px 8px; border-radius: 4px; color: var(--green); font-size: 11px; font-weight: 600; } .header-inner, main, .footer-inner { width: min(100% - 32px, 1120px); } .global-status { width: min(100% - 32px, 1120px); } main { padding-top: 32px; padding-bottom: 48px; } h1 { font-size: 31px; } .fields { grid-template-columns: 1fr; gap: 15px; } .field.full { grid-column: auto; } .aside { padding: 20px; } .footer-inner { justify-content: center; text-align: center; } .footer-inner span:nth-child(2) { display: none; } }
+        @media (max-width: 620px) { .header-inner { width: min(100% - 28px, 1120px); min-height: 68px; flex-wrap: wrap; gap: 0; padding: 11px 0 7px; } .main-nav { height: auto; width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 0; } .nav-link, .nav-trigger { min-height: 39px; padding: 0 8px; font-size: 12px; } .nav-dropdown { height: auto; } .dropdown-menu { top: calc(100% + 2px); left: auto; right: 0; } .main-nav > .nav-dropdown { display: none; } .account-dropdown { order: 4; margin-left: auto; } .account-menu { top: calc(100% + 2px); right: 0; } .account-trigger { max-width: 155px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .mobile-booking-links { display: flex; order: 6; flex: 0 0 100%; justify-content: space-around; gap: 4px; } .main-nav > a.nav-link:last-child { order: 4; margin-left: auto; } .main-nav form { margin: 0; } .mobile-booking-links a { padding: 7px 8px; border-radius: 4px; color: var(--green); font-size: 11px; font-weight: 600; } .header-inner, main, .footer-inner { width: min(100% - 32px, 1120px); } .global-status { width: min(100% - 32px, 1120px); } main { padding-top: 32px; padding-bottom: 48px; } h1 { font-size: 31px; } .fields { grid-template-columns: 1fr; gap: 15px; } .field.full { grid-column: auto; } .aside { padding: 20px; } .footer-inner { justify-content: center; text-align: center; } .footer-inner span:nth-child(2) { display: none; } }
         @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
     </style>
 </head>
@@ -101,10 +112,20 @@
         <div class="header-inner">
             <a class="brand" href="{{ route('home') }}" aria-label="ENTUR ana sayfa">
                 <span class="brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 18 12 5l8 13M7 13h10M9.5 18l2.5-4 2.5 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                ENTUR
-            </a>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="1" fill="#F59E0B"/>
+   
+    <g stroke="#F97316" stroke-width="1.5" stroke-linecap="round">
+        <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+        <path d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+    </g>
+    <g fill="#EAB308">
+        <circle cx="12" cy="2" r=".8"/><circle cx="12" cy="22" r=".8"/><circle cx="2" cy="12" r=".8"/><circle cx="22" cy="12" r=".8"/>
+        <circle cx="4.93" cy="4.93" r=".8"/><circle cx="19.07" cy="19.07" r=".8"/><circle cx="4.93" cy="19.07" r=".8"/><circle cx="19.07" cy="4.93" r=".8"/>
+    </g>
+</svg>  </span> ENTUR </a>
+
+
             <nav class="main-nav" aria-label="Ana menü">
                 <a class="nav-link" href="{{ route('home') }}">Ana Sayfa</a>
                 <a class="nav-link" href="{{ route('about') }}">Hakkımızda</a>
@@ -128,11 +149,25 @@
                 @guest
                     <a class="nav-link nav-booking" href="{{ route('login') }}">Giriş / Kayıt</a>
                 @else
-                    <span class="nav-link account-name">{{ auth()->user()->name }}</span>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="nav-link" type="submit">Çıkış</button>
-                    </form>
+                    <div class="account-dropdown">
+                        <button class="nav-link nav-trigger account-trigger" type="button" aria-haspopup="true">
+                            {{ auth()->user()->name }}
+                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="account-menu">
+                            <div class="account-menu-heading">
+                                <strong>{{ auth()->user()->name }}</strong>
+                                <span>{{ auth()->user()->email }}</span>
+                            </div>
+                            <a href="">Profilim</a>
+                            <a href="{{ route('categories.index') }}">Rezervasyon yap</a>
+                            <a href="">Rezervasyonlarım</a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit">Oturumu kapat</button>
+                            </form>
+                        </div>
+                    </div>
                 @endguest
             </nav>
         </div>

@@ -5,19 +5,33 @@
 @section('content')
 <style>
     .about-main { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 64px 0 80px; }
+    
     .about-lead { max-width: 820px; margin-bottom: 42px; animation: rise .55s ease both; }
+   
     .about-lead h1 { max-width: 760px; margin: 15px 0 18px; font: 700 42px/1.16 'Manrope', sans-serif; }
+    
     .about-lead p { max-width: 690px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+   
     .about-image { width: 100%; height: 390px; object-fit: cover; display: block; border-radius: 4px; }
+   
     .about-story { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; padding: 54px 0; border-bottom: 1px solid var(--line); }
+   
     .about-story h2 { max-width: 320px; font: 700 27px/1.3 'Manrope', sans-serif; }
+   
     .about-story p { margin: 0 0 14px; color: #64716c; font-size: 14px; line-height: 1.9; }
+ 
     .about-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; padding-top: 34px; }
+ 
     .about-value { padding-top: 16px; border-top: 2px solid var(--coral); }
+   
     .about-value span { color: var(--green); font: 700 12px 'Manrope', sans-serif; }
+    
     .about-value h3 { margin: 9px 0; font: 700 16px 'Manrope', sans-serif; }
+   
     .about-value p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    
     .about-action { display: inline-flex; align-items: center; min-height: 48px; margin-top: 35px; padding: 0 17px; border-radius: 4px; background: var(--green); color: #fff; font-size: 13px; font-weight: 700; }
+    
     .about-action:hover { background: var(--green-dark); }
     @media(max-width: 700px) { .about-main { width: min(100% - 32px, 1120px); padding: 40px 0 55px; } .about-lead h1 { font-size: 34px; } .about-image { height: 280px; } .about-story { grid-template-columns: 1fr; gap: 5px; padding: 35px 0; } .about-values { grid-template-columns: 1fr; gap: 22px; } }
 </style>
