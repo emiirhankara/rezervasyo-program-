@@ -24,17 +24,26 @@ class AuthController extends Controller
             'email' => ['required', 'string', 'email', 'max:190', 'unique:users,email'],
             'phone' => ['required', 'string', 'max:30'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'account_type' => ['required', 'in:customer,organizer'],
         ]);
+
+        $isOrganizer = $validated['account_type'] === 'organizer';
 
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],
             'password' => $validated['password'],
+            'role' => $isOrganizer ? 'organizer' : 'customer',
+            'organizer_status' => $isOrganizer ? 'pending' : 'not_applicable',
         ]);
 
         Auth::login($user);
         $request->session()->regenerate();
+
+        if ($isOrganizer) {
+            return to_route('home')->with('status', 'Organizatör kaydınız oluşturuldu! Hesabınızın aktifleştirilmesi için sistem yöneticisinin onayı ve yıllık aidat ödemeniz gerekmektedir.');
+        }
 
         return to_route('home')->with('status', 'Kaydınız oluşturuldu. Hoş geldiniz.');
     }

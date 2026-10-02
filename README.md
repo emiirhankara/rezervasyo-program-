@@ -57,3 +57,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## ENTUR Yönetim Kurulumu
+
+Sistem yöneticisi hesabını ilk kez oluşturmak için `.env` dosyasında `SYSTEM_ADMIN_NAME`, `SYSTEM_ADMIN_EMAIL` ve güçlü bir `SYSTEM_ADMIN_PASSWORD` tanımlayın. Ardından proje klasöründe şu komutu çalıştırın:
+
+```powershell
+php artisan db:seed --class="Database\Seeders\SystemAdminSeeder"
+```
+
+Yönetim girişi `/yonetim/giris` adresindedir. Giriş ekranında hesap rolü seçilir; sistem yöneticisi ve organizatör hesapları birbirlerinin panellerine erişemez. Sistem yöneticisi panelinden organizatör hesabı ve yıllık üyelik/taksit planı açılır. Üyelik bedeli tamamen ödendiğinde organizatör paneli etkinleşir.
+
+Rezervasyon ve iletişim formları oturum açmayı gerektirir. Kart bilgisi uygulamada saklanmaz; gerçek kart tahsilatı için bir ödeme sağlayıcısı entegrasyonu gerekir. Kart işlemleri sağlayıcı eklenene kadar beklemede tutulur. Havale/EFT kayıtları sistem yöneticisinin dekont kontrolü sonrası onaylanır.

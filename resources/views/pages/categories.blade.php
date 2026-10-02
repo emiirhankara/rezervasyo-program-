@@ -28,9 +28,11 @@
     <div class="categories-grid">
         @foreach ($categories as $key => $category)
             @php($item = $category['items'][0])
+
+            @php($imageUrl = !empty($item['image_url']) ? $item['image_url'] : (!empty($item['image']) ? 'https://images.unsplash.com/'.$item['image'].'?auto=format&fit=crop&w=1000&q=80' : 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=80'))
             <article class="category-tile">
                 <a class="category-tile-image" href="{{ route('categories.show', $key) }}">
-                    <img src="https://images.unsplash.com/{{ $item['image'] }}?auto=format&fit=crop&w=1000&q=80" alt="{{ $category['title'] }} için örnek seçenek" loading="lazy">
+                    <img src="{{ $imageUrl }}" alt="{{ $category['title'] }} için örnek seçenek" loading="lazy">
                 </a>
                 <h2>{{ $category['title'] }}</h2>
                 <p>{{ $category['description'] }}</p>

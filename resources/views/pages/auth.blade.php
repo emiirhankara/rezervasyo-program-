@@ -60,10 +60,34 @@
             @if ($activeTab === 'register')
                 <div class="auth-heading">
                     <h2>Yeni hesap oluşturun</h2>
-                    <p>Bilgilerinizi girin; kayıt tamamlandığında hesabınız açılacaktır.</p>
+                    <p>Hesap türünüzü seçin ve bilgilerinizi girin.</p>
                 </div>
                 <form class="auth-form" action="{{ route('register.store') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="account_type" id="accountType" value="{{ old('account_type', 'customer') }}">
+
+                    {{-- Account Type Selection --}}
+                    <div class="field full" style="margin-bottom:4px">
+                        <label style="margin-bottom:8px;display:block">Hesap Türü</label>
+                        <div class="account-type-cards">
+                            <button type="button" class="type-card {{ old('account_type', 'customer') === 'customer' ? 'active' : '' }}" id="typeCardCustomer" onclick="selectAccountType('customer')">
+                                <span class="type-card-icon">🛒</span>
+                                <span class="type-card-title">Müşteri Hesabı</span>
+                                <span class="type-card-desc">Otellere, etkinliklere ve villalara rezervasyon yapın, bilet satın alın.</span>
+                            </button>
+                            <button type="button" class="type-card {{ old('account_type') === 'organizer' ? 'active' : '' }}" id="typeCardOrganizer" onclick="selectAccountType('organizer')">
+                                <span class="type-card-icon">🎪</span>
+                                <span class="type-card-title">Organizatör Hesabı</span>
+                                <span class="type-card-desc">Etkinlik, otel veya villa ilanı oluşturun, bilet satın ve gelirinizi yönetin.</span>
+                            </button>
+                        </div>
+                        <div class="organizer-notice" id="organizerNotice" style="{{ old('account_type') === 'organizer' ? '' : 'display:none' }}">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Organizatör hesabınız kayıt sonrası <strong>onay bekleyen</strong> durumda olacaktır. Sistem yöneticisi onayı ve yıllık aidat ödemeniz tamamlandıktan sonra panele erişebilirsiniz.
+                        </div>
+                        @error('account_type')<span class="auth-error">{{ $message }}</span>@enderror
+                    </div>
+
                     <div class="field">
                         <label for="name">İsim soyisim</label>
                         <input id="name" name="name" type="text" autocomplete="name" value="{{ old('name') }}" required maxlength="160">
@@ -100,7 +124,7 @@
                             </button>
                         </div>
                     </div>
-                    <button class="auth-submit" type="submit">Kayıt ol ve giriş yap</button>
+                    <button class="auth-submit" type="submit" id="registerBtn">Kayıt ol ve giriş yap</button>
                     <p class="auth-footnote">Şifreniz güvenli biçimde saklanır ve kayıt sırasında iki şifrenin eşleşmesi zorunludur.</p>
                 </form>
             @else

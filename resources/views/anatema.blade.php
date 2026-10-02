@@ -159,9 +159,14 @@
                                 <strong>{{ auth()->user()->name }}</strong>
                                 <span>{{ auth()->user()->email }}</span>
                             </div>
-                            <a href="">Profilim</a>
-                            <a href="{{ route('categories.index') }}">Rezervasyon yap</a>
-                            <a href="">Rezervasyonlarım</a>
+                            @if (auth()->user()->role === 'customer')
+                                <a href="{{ route('customer.reservations') }}">Rezervasyonlarım</a>
+                                <a href="{{ route('categories.index') }}">Rezervasyon yap</a>
+                            @elseif (auth()->user()->role === 'organizer')
+                                <a href="{{ route('organizer.dashboard') }}">Organizatör paneli</a>
+                            @else
+                                <a href="{{ route('system.dashboard') }}">Sistem yönetimi</a>
+                            @endif
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit">Oturumu kapat</button>
@@ -183,6 +188,7 @@
             <nav class="footer-links" aria-label="Alt menü">
                 <a href="{{ route('about') }}">Hakkımızda</a>
                 <a href="{{ route('contact') }}">İletişim</a>
+                <a href="{{ route('admin.login') }}">Yönetim girişi</a>
             </nav>
         </div>
     </footer>
